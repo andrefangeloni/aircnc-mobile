@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
   },
   button: {
     height: 42,
-    backgroundColor: '#f05a5b',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 2,
+    backgroundColor: '#f05a5b',
   },
   buttonText: {
     fontSize: 16,
