@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { SafeAreaView, ScrollView, Image } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -9,7 +14,7 @@ import logo from '../../assets/logo.png';
 
 import styles from './styles';
 
-export default function List() {
+export default function List({ navigation }) {
   const [techs, setTechs] = useState([]);
 
   useEffect(() => {
@@ -20,9 +25,17 @@ export default function List() {
     });
   }, []);
 
+  async function handleLogin() {
+    await AsyncStorage.removeItem('user');
+
+    navigation.navigate('Login');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.logo} source={logo} />
+      <TouchableOpacity onPress={handleLogin}>
+        <Image style={styles.logo} source={logo} />
+      </TouchableOpacity>
 
       <ScrollView>
         {techs.map(tech => (
